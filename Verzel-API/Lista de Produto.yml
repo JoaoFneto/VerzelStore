@@ -1,0 +1,47 @@
+info:
+  name: Lista de Produto
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://verzel-store.qa-test-verzel-store.workers.dev/api/pedidos
+  body:
+    type: json
+    data: |-
+      {
+        "cliente": {
+          "nome": "Maria Silva",
+          "email": "maria@exemplo.com",
+          "cep": "01310-100"
+        },
+        "itens": [
+          { "produtoId": "{{MochilaUrbana}}", "quantidade": 0 }
+        ]
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: CamisaEssencial
+      value: P001
+    - name: CalcaJens
+      value: P002
+    - name: TenisUrbano
+      value: P003
+    - name: BoneCurva
+      value: P004
+    - name: MochilaUrbana
+      value: P005
+    - name: KitMeias
+      value: P006
+    - name: Jaqueta
+      value: P007
+    - name: GarrafaTermica
+      value: P008
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
