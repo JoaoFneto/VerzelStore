@@ -139,6 +139,12 @@ O caso CT06 está registrado como reprovado em [`frontend.md`](./frontend.md). O
 
 O cenário do CT01 documenta o desconto de 10% do cupom `BEMVINDO10`. Na implementação atual, a automação valida a mensagem de aplicação do cupom e a confirmação do pedido, mas não faz uma asserção numérica independente do cálculo do desconto. Essa regra também está descrita nos testes de API e Front-End.
 
+### Condição de primeira compra do cupom
+
+A loja informa que o cupom `BEMVINDO10` concede 10% de desconto nos produtos na primeira compra. No entanto, os critérios de aceite e as regras de negócio fornecidos descrevem o percentual e as condições de aplicação, sem restringir o cupom à primeira compra.
+
+Na validação do ambiente, foi possível aplicar o mesmo cupom em pedidos diferentes; cada compra gera um registro de pedido individual. Isso evidencia uma divergência entre a comunicação apresentada ao cliente e o comportamento observado, além de uma lacuna nos critérios: não está definido se o cupom deve ser exclusivo da primeira compra. Os testes documentados cobrem as regras explicitadas nos critérios, mas não tratam essa restrição como requisito validado.
+
 ## Evidências
 
 As capturas estão organizadas por ferramenta e caso, dentro de [`evidencias/`](./evidencias/). Os documentos de teste contêm as imagens incorporadas e as observações detalhadas:
